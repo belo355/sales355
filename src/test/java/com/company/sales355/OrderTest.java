@@ -16,9 +16,8 @@ public class OrderTest {
     @Test
     public void NotOrderCheckedWithCFPInvalid(){
         OrderService orderService = new OrderService();
-        DocumentIdentification document = new DocumentIdentification("42036080820");
         Bag bag = orderService.createBagOrder(new Producto("Tshirt", new BigDecimal("10.00"), 10));
-        Order order = new Order(document, bag);
+        Order order = orderService.createOrder(new DocumentIdentification("42036080820"), bag);
         assertTrue(orderService.ValidDocumentIdentificationIntoOrder(order));
     }
 
