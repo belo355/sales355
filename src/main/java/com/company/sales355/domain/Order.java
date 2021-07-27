@@ -11,6 +11,10 @@ public class Order {
     }
 
     public DocumentIdentification getDocumentIdentification() {
-        return documentIdentification;
+        return this.documentIdentification;
+    }
+
+    public Object getBag() {
+        return this.bag;
     }
 }
