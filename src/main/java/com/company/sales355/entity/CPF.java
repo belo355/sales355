@@ -1,15 +1,22 @@
-package com.company.sales355.service;
-
-import com.company.sales355.domain.DocumentIdentification;
+package com.company.sales355.entity;
 
 import java.util.InputMismatchException;
 
-public class DocumentationIdentificationService {
-    public boolean valid(DocumentIdentification documentIdentification) {
-        return isCPF(documentIdentification.getDocument());
+public class CPF {
+    private String cpf;
+
+    public CPF(String cpf) {
+        if(!isValid(cpf)){
+            throw new Error("Invalid CPF");
+        }
+        this.cpf = cpf;
     }
 
-    private boolean isCPF(String document) {
+    public String getCpf() {
+        return this.cpf;
+    }
+
+    private boolean isValid(String document){
         if (document.equals("00000000000") ||
                 document.equals("11111111111") ||
                 document.equals("22222222222") || document.equals("33333333333") ||
@@ -31,7 +38,7 @@ public class DocumentationIdentificationService {
                 // converte o i-esimo caractere do CPF em um numero:
                 // por exemplo, transforma o caractere '0' no inteiro 0
                 // (48 eh a posicao de '0' na tabela ASCII)
-                num = (int) (document.charAt(i) - 48);
+                num = (int) (document.toString().charAt(i) - 48);
                 sm = sm + (num * peso);
                 peso = peso - 1;
             }
