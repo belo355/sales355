@@ -24,7 +24,7 @@ public class PlaceOrder {
             order.setOrderItem(item);
         }
         if(!placeOrderDTO.getCupom().getCode().isEmpty()){
-            Optional<Boolean> hasCupom = cupomsDisponiveis.stream().map(cupom -> cupom.getCode().equals(placeOrderDTO.getCupom())).findFirst(); //TODO: RETORNAR O CUPOM
+            Optional<Cupom> hasCupom = cupomsDisponiveis.stream().filter(cupom -> cupom.getCode().equals(placeOrderDTO.getCupom().getCode())).findFirst();
             if(hasCupom.isPresent()){
                 order.addCupom(placeOrderDTO.getCupom().getCode(), placeOrderDTO.getCupom().getPercentage());
             }
