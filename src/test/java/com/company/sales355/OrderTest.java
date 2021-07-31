@@ -16,7 +16,7 @@ public class OrderTest {
         CPF cpf = new CPF("42036080820");
         OrderItem orderItem = new OrderItem("Camisa P", new BigDecimal("50"),1);
         Order order = new Order(cpf, orderItem);
-        assertEquals(order.getCpf(), cpf.getCpf());
+        assertEquals(order.getCpf(), cpf.getDocument());
     }
 
     @Test

@@ -27,7 +27,7 @@ public class Order {
     }
 
     public String getCpf() {
-        return this.cpf.getCpf();
+        return this.cpf.getDocument();
     }
 
     public void setOrderItem(OrderItem orderItem) {
@@ -50,7 +50,7 @@ public class Order {
         return total;
     }
 
-    public void addCupom(String code, int percentage) {
+    public void addCupom(String code, double percentage) {
         this.cupom = new Cupom(code, percentage);
     }
 }

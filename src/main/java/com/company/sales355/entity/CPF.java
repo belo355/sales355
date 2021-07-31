@@ -3,17 +3,17 @@ package com.company.sales355.entity;
 import java.util.InputMismatchException;
 
 public class CPF {
-    private String cpf;
+    private String document;
 
     public CPF(String cpf) {
         if(!isValid(cpf)){
             throw new Error("Invalid CPF");
         }
-        this.cpf = cpf;
+        this.document = cpf;
     }
 
-    public String getCpf() {
-        return this.cpf;
+    public String getDocument() {
+        return this.document;
     }
 
     private boolean isValid(String document){
