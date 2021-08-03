@@ -3,8 +3,8 @@ package com.company.sales355;
 import com.company.sales355.entity.CPF;
 import com.company.sales355.entity.Cupom;
 import com.company.sales355.entity.OrderItem;
-import com.company.sales355.service.PlaceOrderDTO;
-import com.company.sales355.service.PlaceOrder;
+import com.company.sales355.userCase.PlaceOrderInputDTO;
+import com.company.sales355.userCase.PlaceOrder;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -24,8 +24,8 @@ public class PlaceOrderTest {
         orderItems.add(new OrderItem("Amplificador", new BigDecimal("5000"), 1));
         orderItems.add(new OrderItem("Cabo", new BigDecimal("30"), 3));
         Cupom cupom = new Cupom("VALE20", 20);
-        PlaceOrderDTO placeOrderDTO = new PlaceOrderDTO(cpf, orderItems, cupom);
-        BigDecimal totalPedido = placeOrder.execute(placeOrderDTO);
+        PlaceOrderInputDTO placeOrderInputDTO = new PlaceOrderInputDTO(cpf, orderItems, cupom);
+        BigDecimal totalPedido = placeOrder.execute(placeOrderInputDTO);
         assertEquals(totalPedido, new BigDecimal("5672.00"));
     }
 }
