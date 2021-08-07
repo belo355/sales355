@@ -6,6 +6,7 @@ import com.company.sales355.entity.Order;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
 
@@ -40,7 +41,7 @@ public class OrderTest {
         Order order = new Order(cpf);
         order.setOrderItem(orderItemA);
         order.setOrderItem(orderItemB);
-        order.addCupom("VALE20", 20);
+        order.addCupom("VALE20", 20, LocalDate.now());
         assertEquals(new BigDecimal("120.00"),  order.getTotal());
 
     }

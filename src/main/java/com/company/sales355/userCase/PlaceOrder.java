@@ -5,30 +5,32 @@ import com.company.sales355.entity.Cupom;
 import com.company.sales355.entity.Order;
 import com.company.sales355.entity.OrderItem;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class PlaceOrder {
+    public class PlaceOrder {
 
     private List<Cupom> cupomsDisponiveis = new ArrayList<>();
 
     public PlaceOrder() {
-        cupomsDisponiveis.add(new Cupom("VALE20", 20));
+        cupomsDisponiveis.add(new Cupom("VALE20", 20, LocalDate.now()));
     }
 
     public PlaceOrderOutputDTO execute(PlaceOrderInputDTO placeOrderInputDTO) {
-        PlaceOrderOutputDTO outputDTO = null; 
+        PlaceOrderOutputDTO outputDTO = new PlaceOrderOutputDTO();
         Order order = new Order(new CPF(placeOrderInputDTO.getCpf()));
-        for (OrderItem item: placeOrderInputDTO.getItems()){
+        for (OrderItem item : placeOrderInputDTO.getItems()) {
             order.setOrderItem(item);
         }
-        if(!placeOrderInputDTO.getCupom().isEmpty()){
+        if (!placeOrderInputDTO.getCupom().isEmpty()) {
             Optional<Cupom> hasCupom = cupomsDisponiveis.stream()
                     .filter(cupom -> cupom.getCode().equals(placeOrderInputDTO.getCupom())).findFirst();
 
-            hasCupom.ifPresent(cupom -> order.addCupom(placeOrderInputDTO.getCupom(), cupom.getPercentage()));
+            hasCupom.ifPresent(cupom -> order.addCupom(placeOrderInputDTO.getCupom(), cupom.getPercentage(), cupom.getExpireDate()));
         }
-//       return outputDTO.total(order.getTotal()); //TODO: REGULARIZAR
+        outputDTO.setTotal(order.getTotal());
+        return outputDTO;
     }
 }

@@ -1,7 +1,5 @@
 package com.company.sales355.userCase;
 
-import com.company.sales355.entity.CPF;
-import com.company.sales355.entity.Cupom;
 import com.company.sales355.entity.OrderItem;
 
 import java.util.List;
