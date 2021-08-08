@@ -16,6 +16,7 @@ import java.util.Optional;
 
     public PlaceOrder() {
         cupomsDisponiveis.add(new Cupom("VALE20", 20, LocalDate.now()));
+        cupomsDisponiveis.add(new Cupom("VALE20_EXPIRED", 20, LocalDate.of(2020,01,01)));
     }
 
     public PlaceOrderOutputDTO execute(PlaceOrderInputDTO placeOrderInputDTO) {
@@ -28,7 +29,7 @@ import java.util.Optional;
             Optional<Cupom> hasCupom = cupomsDisponiveis.stream()
                     .filter(cupom -> cupom.getCode().equals(placeOrderInputDTO.getCupom())).findFirst();
 
-            hasCupom.ifPresent(cupom -> order.addCupom(placeOrderInputDTO.getCupom(), cupom.getPercentage(), cupom.getExpireDate()));
+            hasCupom.ifPresent(cupom -> order.addCupom(new Cupom(placeOrderInputDTO.getCupom(), cupom.getPercentage(), cupom.getExpireDate())));
         }
         outputDTO.setTotal(order.getTotal());
         return outputDTO;

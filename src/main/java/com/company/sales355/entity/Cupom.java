@@ -3,22 +3,21 @@ package com.company.sales355.entity;
 import java.time.LocalDate;
 
 public class Cupom {
-    private final LocalDate expireDate;
     private String code;
     private double percentage;
+    private LocalDate expireDate;
 
     public Cupom(String code, double percentage, LocalDate expireDate) {
         this.code = code;
         this.percentage = percentage;
-
-        if(isExpired(expireDate)){
-            throw new Error("não é possivel inserir cupom vencido");
-        }
         this.expireDate = expireDate;
+//        if(isExpired()){
+//            throw new Error("não é possivel inserir cupom vencido");
+//        }
     }
 
-    private boolean isExpired(LocalDate expireDate) {
-        return expireDate.isBefore(LocalDate.now());
+    public boolean isExpired() {
+        return this.expireDate.isBefore(LocalDate.now());
     }
 
     public double getPercentage() {

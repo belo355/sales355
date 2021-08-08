@@ -1,7 +1,6 @@
 package com.company.sales355.entity;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +50,9 @@ public class Order {
         return total;
     }
 
-    public void addCupom(String code, double percentage, LocalDate expireDate) {
-        this.cupom = new Cupom(code, percentage, expireDate);
+    public void addCupom(Cupom cupom) {
+        if(!cupom.isExpired()){
+            this.cupom = cupom;
+        }
     }
 }
