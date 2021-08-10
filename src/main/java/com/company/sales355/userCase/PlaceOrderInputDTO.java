@@ -15,6 +15,7 @@ public class PlaceOrderInputDTO {
         this.items = items;
         this.cupom = cupom;
     }
+
     public PlaceOrderInputDTO(String cpf, List<OrderItem> items) {
         this.cpf = cpf;
         this.items = items;
