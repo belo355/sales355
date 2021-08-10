@@ -11,9 +11,6 @@ public class Cupom {
         this.code = code;
         this.percentage = percentage;
         this.expireDate = expireDate;
-//        if(isExpired()){
-//            throw new Error("não é possivel inserir cupom vencido");
-//        }
     }
 
     public boolean isExpired() {
