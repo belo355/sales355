@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Item {
 
-    private String code;
+    private String id;
     private String description;
     private BigDecimal price;
     private float width;
@@ -12,8 +12,8 @@ public class Item {
     private float length;
     private float weight;
 
-    public Item(String code, String description, BigDecimal price, int width, int height, int length, int weight) {
-        this.code = code;
+    public Item(String id, String description, BigDecimal price, int width, int height, int length, int weight) {
+        this.id = id;
         this.description = description;
         this.price = price;
         this.width = width;
