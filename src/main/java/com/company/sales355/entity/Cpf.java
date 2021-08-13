@@ -2,10 +2,10 @@ package com.company.sales355.entity;
 
 import java.util.InputMismatchException;
 
-public class CPF {
+public class Cpf {
     private String document;
 
-    public CPF(String cpf) {
+    public Cpf(String cpf) {
         if(!isValid(cpf)){
             throw new Error("Invalid CPF");
         }

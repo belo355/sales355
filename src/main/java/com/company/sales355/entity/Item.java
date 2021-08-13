@@ -29,4 +29,32 @@ public class Item {
     public double getDensity() {
         return this.weight / this.getVolume();
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public float getWidth() {
+        return width;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public float getLength() {
+        return length;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
 }

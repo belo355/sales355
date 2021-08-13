@@ -6,22 +6,22 @@ import java.util.List;
 
 public class Order {
 
-    private CPF cpf;
+    private Cpf cpf;
     private List<OrderItem> itens;
     private Cupom cupom;
 
-    public Order(CPF cpf){
+    public Order(Cpf cpf){
         this.cpf = cpf;
         this.itens = new ArrayList<>();
     }
 
-    public Order(CPF cpf, OrderItem orderItem){
+    public Order(Cpf cpf, OrderItem orderItem){
         this.itens = new ArrayList<>();
         itens.add(orderItem);
         this.cpf = cpf;
     }
 
-    public Order(CPF cpf, List<OrderItem> orderItem){
+    public Order(Cpf cpf, List<OrderItem> orderItem){
         this.itens = orderItem;
         this.cpf = cpf;
     }
@@ -32,10 +32,6 @@ public class Order {
 
     public void setOrderItem(OrderItem orderItem) {
         this.itens.add(orderItem);
-    }
-
-    public void setOrderItem(List<OrderItem> orderItem) {
-        this.itens = orderItem;
     }
 
     public BigDecimal getTotal(){
@@ -54,5 +50,13 @@ public class Order {
         if(!cupom.isExpired()){
             this.cupom = cupom;
         }
+    }
+
+    public List<OrderItem> getItens() {
+        return itens;
+    }
+
+    public Cupom getCupom() {
+        return cupom;
     }
 }
