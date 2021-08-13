@@ -1,10 +1,11 @@
 package com.company.sales355.userCase;
 
-import com.company.sales355.entity.Order;
+import com.company.sales355.entity.FreightCalculator;
 import com.company.sales355.entity.Cupom;
 import com.company.sales355.entity.Item;
-import com.company.sales355.entity.OrderItem;
+import com.company.sales355.entity.Order;
 import com.company.sales355.entity.Cpf;
+import com.company.sales355.entity.OrderItem;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ public class PlaceOrder {
 
     private List<Cupom> coupons = new ArrayList<>();
     private List<Item> items = new ArrayList<>();
+    private FreightCalculator freightCalculator;
 
     public PlaceOrder() {
         coupons.add(new Cupom("VALE20", 20, LocalDate.now()));
@@ -35,6 +37,8 @@ public class PlaceOrder {
                 throw new Error("Item not found");
             }
             order.setOrderItem(new OrderItem(item.getId(), itemsRepo.get(0).getPrice(), item.getQuantity()));
+            FreightCalculator freightCalculator = new FreightCalculator();
+            //TODO: CONTINUAR
         }
         if (!placeOrderInputDTO.getCupom().isEmpty()) {
             Optional<Cupom> hasCupom = coupons.stream().filter(cupom -> cupom.getCode().equals(placeOrderInputDTO.getCupom())).findFirst();
