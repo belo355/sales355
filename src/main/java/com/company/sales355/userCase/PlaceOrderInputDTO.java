@@ -10,10 +10,15 @@ public class PlaceOrderInputDTO {
     private List<OrderItem> items;
     private String cupom;
 
-    public PlaceOrderInputDTO(String cpf, List<OrderItem> items, String cupom) {
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public PlaceOrderInputDTO(String cpf, List<OrderItem> items, String cupom, String zipCode) {
         this.cpf = cpf;
         this.items = items;
         this.cupom = cupom;
+        this.zipCode = zipCode;
     }
 
     public PlaceOrderInputDTO(String cpf, List<OrderItem> items) {
@@ -32,4 +37,7 @@ public class PlaceOrderInputDTO {
     public String getCupom() {
         return cupom;
     }
+
+    private String zipCode;
+
 }

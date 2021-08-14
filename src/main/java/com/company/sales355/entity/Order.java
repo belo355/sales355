@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Order {
 
+    public BigDecimal freight;
     private Cpf cpf;
     private List<OrderItem> itens;
     private Cupom cupom;
@@ -13,6 +14,7 @@ public class Order {
     public Order(Cpf cpf){
         this.cpf = cpf;
         this.itens = new ArrayList<>();
+        this.freight = BigDecimal.ZERO;
     }
 
     public Order(Cpf cpf, OrderItem orderItem){
@@ -43,6 +45,7 @@ public class Order {
         BigDecimal desconto = total.multiply(BigDecimal.valueOf(cupom.getPercentage())).divide(new BigDecimal("100"));
          return total.subtract(desconto);
        }
+       total = total.add(this.freight);
         return total;
     }
 
@@ -58,5 +61,13 @@ public class Order {
 
     public Cupom getCupom() {
         return cupom;
+    }
+
+    public void setFreight(BigDecimal freight) {
+        this.freight = this.freight.add(freight);
+    }
+
+    public BigDecimal getFreight() {
+        return this.freight;
     }
 }
