@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 
 public class OrderItem {
 
-    private String id;
-    private BigDecimal price;
-    private double quantity;
+    private final String id;
+    private final BigDecimal price;
+    private final int quantity;
 
-    public OrderItem(String id, BigDecimal price,  double quantity) {
+    public OrderItem(String id, BigDecimal price,  int quantity) {
         this.id = id;
         this.price = price;
         this.quantity = quantity;
@@ -26,7 +26,7 @@ public class OrderItem {
         return price;
     }
 
-    public double getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 }

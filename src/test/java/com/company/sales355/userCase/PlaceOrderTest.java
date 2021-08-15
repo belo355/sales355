@@ -26,7 +26,7 @@ public class PlaceOrderTest {
         PlaceOrderInputDTO placeOrderInputDTO = new PlaceOrderInputDTO(cpf.getDocument(), orderItems, cupom.getCode(), zipCode);
         PlaceOrder placeOrder = new PlaceOrder();
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderInputDTO);
-        assertEquals(placeOrderOutputDTO.getTotal(), new BigDecimal("5672.00"));
+        assertEquals(placeOrderOutputDTO.getTotal(), new BigDecimal("5672.0"));
     }
 
     @Test
@@ -41,7 +41,7 @@ public class PlaceOrderTest {
         PlaceOrder placeOrder = new PlaceOrder();
         PlaceOrderInputDTO placeOrderInputDTO = new PlaceOrderInputDTO(cpf.getDocument(), items, cupom.getCode(),zipCode);
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderInputDTO);
-        assertEquals(placeOrderOutputDTO.getTotal(), new BigDecimal("7400.00"));
+        assertEquals(placeOrderOutputDTO.getTotal(), new BigDecimal("7400.0"));
     }
 
     @Test
@@ -56,6 +56,6 @@ public class PlaceOrderTest {
         PlaceOrder placeOrder = new PlaceOrder();
         PlaceOrderInputDTO placeOrderInputDTO = new PlaceOrderInputDTO(cpf.getDocument(), items, cupom.getCode(), zipCode);
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderInputDTO);
-        assertEquals(placeOrderOutputDTO.getFreight(), new BigDecimal("310.00"));
+        assertEquals(placeOrderOutputDTO.getFreight(), new BigDecimal("310.0"));
     }
 }

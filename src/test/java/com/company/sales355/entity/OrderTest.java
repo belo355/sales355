@@ -39,7 +39,7 @@ public class OrderTest {
         orderItems.add(new OrderItem("2", new BigDecimal("5000"),1));
         Order order = new Order(cpf, orderItems);
         order.addCupom(new Cupom("VALE20", 20, LocalDate.now()));
-        assertEquals(new BigDecimal("4800.00"),  order.getTotal());
+        assertEquals(new BigDecimal("4800.0"),  order.getTotal());
     }
 
     @Test
@@ -50,6 +50,6 @@ public class OrderTest {
         orderItems.add(new OrderItem("2", new BigDecimal("5000"),1));
         Order order = new Order(cpf, orderItems);
         order.addCupom(new Cupom ("VALE20", 20, LocalDate.of(2020, 10, 1)));
-        assertEquals(new BigDecimal("6000.0"),  order.getTotal());
+        assertEquals(new BigDecimal("6000"),  order.getTotal());
     }
 }

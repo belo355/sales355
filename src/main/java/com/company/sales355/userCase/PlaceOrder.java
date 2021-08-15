@@ -37,13 +37,16 @@ public class PlaceOrder {
             order.setFreight(BigDecimal.valueOf(amountFreight).multiply(BigDecimal.valueOf(item.getQuantity())));
         }
         if (!placeOrderInputDTO.getCupom().isEmpty()) {
-            //todo: chamar metodo para calculo
-            Optional<Cupom> hasCupom = coupons.stream().filter(cupom -> cupom.getCode().equals(placeOrderInputDTO.getCupom())).findFirst();
-            hasCupom.ifPresent(cupom -> order.addCupom(new Cupom(placeOrderInputDTO.getCupom(), cupom.getPercentage(), cupom.getExpireDate())));
+            includeCouponIntoOrder(placeOrderInputDTO, order);
         }
         PlaceOrderOutputDTO outputDTO = new PlaceOrderOutputDTO();
         outputDTO.setTotal(order.getTotal());
         outputDTO.setFreight(order.getFreight());
         return outputDTO;
+    }
+
+    private void includeCouponIntoOrder(PlaceOrderInputDTO placeOrderInputDTO, Order order) {
+        Optional<Cupom> hasCupom = coupons.stream().filter(cupom -> cupom.getCode().equals(placeOrderInputDTO.getCupom())).findFirst();
+        hasCupom.ifPresent(cupom -> order.addCupom(new Cupom(placeOrderInputDTO.getCupom(), cupom.getPercentage(), cupom.getExpireDate())));
     }
 }
