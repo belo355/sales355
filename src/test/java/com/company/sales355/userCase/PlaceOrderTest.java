@@ -1,7 +1,7 @@
 package com.company.sales355.userCase;
 
 import com.company.sales355.entity.Cpf;
-import com.company.sales355.entity.Cupom;
+import com.company.sales355.entity.Coupon;
 import com.company.sales355.entity.OrderItem;
 import org.junit.Test;
 
@@ -22,8 +22,8 @@ public class PlaceOrderTest {
         orderItems.add(new OrderItem("1", new BigDecimal("1000"), 2));
         orderItems.add(new OrderItem("2", new BigDecimal("5000"),  1));
         orderItems.add(new OrderItem("3", new BigDecimal("1000"), 3));
-        Cupom cupom = new Cupom("VALE20", 20, LocalDate.now());
-        PlaceOrderInputDTO placeOrderInputDTO = new PlaceOrderInputDTO(cpf.getDocument(), orderItems, cupom.getCode(), zipCode);
+        Coupon coupon = new Coupon("VALE20", 20, LocalDate.now());
+        PlaceOrderInputDTO placeOrderInputDTO = new PlaceOrderInputDTO(cpf.getDocument(), orderItems, coupon.getCode(), zipCode);
         PlaceOrder placeOrder = new PlaceOrder();
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderInputDTO);
         assertEquals(placeOrderOutputDTO.getTotal(), new BigDecimal("5672.0"));
@@ -37,9 +37,9 @@ public class PlaceOrderTest {
         items.add(new OrderItem("1", new BigDecimal("1000"), 2));
         items.add(new OrderItem("2", new BigDecimal("5000"),1));
         items.add(new OrderItem("3", new BigDecimal("30"),3));
-        Cupom cupom = new Cupom("VALE20_EXPIRED", 20, LocalDate.of(2020, 1, 1));
+        Coupon coupon = new Coupon("VALE20_EXPIRED", 20, LocalDate.of(2020, 1, 1));
         PlaceOrder placeOrder = new PlaceOrder();
-        PlaceOrderInputDTO placeOrderInputDTO = new PlaceOrderInputDTO(cpf.getDocument(), items, cupom.getCode(),zipCode);
+        PlaceOrderInputDTO placeOrderInputDTO = new PlaceOrderInputDTO(cpf.getDocument(), items, coupon.getCode(),zipCode);
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderInputDTO);
         assertEquals(placeOrderOutputDTO.getTotal(), new BigDecimal("7400.0"));
     }
@@ -52,9 +52,9 @@ public class PlaceOrderTest {
         items.add(new OrderItem("1", new BigDecimal("1000"), 2));
         items.add(new OrderItem("2", new BigDecimal("5000"),1));
         items.add(new OrderItem("3", new BigDecimal("30"),3));
-        Cupom cupom = new Cupom("VALE20_EXPIRED", 20, LocalDate.of(2020, 1, 1));
+        Coupon coupon = new Coupon("VALE20_EXPIRED", 20, LocalDate.of(2020, 1, 1));
         PlaceOrder placeOrder = new PlaceOrder();
-        PlaceOrderInputDTO placeOrderInputDTO = new PlaceOrderInputDTO(cpf.getDocument(), items, cupom.getCode(), zipCode);
+        PlaceOrderInputDTO placeOrderInputDTO = new PlaceOrderInputDTO(cpf.getDocument(), items, coupon.getCode(), zipCode);
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderInputDTO);
         assertEquals(placeOrderOutputDTO.getFreight(), new BigDecimal("310.0"));
     }

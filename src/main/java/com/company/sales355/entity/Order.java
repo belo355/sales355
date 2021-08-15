@@ -9,7 +9,7 @@ public class Order {
     public BigDecimal freight;
     private final Cpf cpf;
     private final List<OrderItem> items;
-    private Cupom cupom;
+    private Coupon coupon;
 
     public Order(Cpf cpf) {
         this.cpf = cpf;
@@ -43,16 +43,16 @@ public class Order {
         for (OrderItem oi : items) {
             total = total.add(oi.getTotal());
         }
-        if (this.cupom != null) {
-            return total.subtract(total.multiply(BigDecimal.valueOf(cupom.getPercentage())).divide(new BigDecimal("100")));
+        if (this.coupon != null) {
+            return total.subtract(total.multiply(BigDecimal.valueOf(coupon.getPercentage())).divide(new BigDecimal("100")));
         }
         total = total.add(this.freight);
         return total;
     }
 
-    public void addCupom(Cupom cupom) {
-        if (!cupom.isExpired()) {
-            this.cupom = cupom;
+    public void addCupom(Coupon coupon) {
+        if (!coupon.isExpired()) {
+            this.coupon = coupon;
         }
     }
 
@@ -60,8 +60,8 @@ public class Order {
         return items;
     }
 
-    public Cupom getCupom() {
-        return cupom;
+    public Coupon getCupom() {
+        return coupon;
     }
 
     public void setFreight(BigDecimal freight) {

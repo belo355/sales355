@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
 
 public class PlaceOrder {
 
-    private final List<Cupom> coupons = new ArrayList<>();
+    private final List<Coupon> coupons = new ArrayList<>();
     private final List<Item> items = new ArrayList<>();
     private ZipCodeCalculatorApiMemory zipCodeCalculator = new ZipCodeCalculatorApiMemory();
 
     public PlaceOrder() {
-        coupons.add(new Cupom("VALE20", 20, LocalDate.now()));
-        coupons.add(new Cupom("VALE20_EXPIRED", 20, LocalDate.of(2020, 1, 1)));
+        coupons.add(new Coupon("VALE20", 20, LocalDate.now()));
+        coupons.add(new Coupon("VALE20_EXPIRED", 20, LocalDate.of(2020, 1, 1)));
 
         items.add(new Item("1", "Guitarra", new BigDecimal("1000"),  100, 50, 15, 3));
         items.add(new Item("2", "Amplificador", new BigDecimal("5000"),  50, 50, 50, 22));
@@ -47,7 +47,7 @@ public class PlaceOrder {
     }
 
     private void includeCouponIntoOrder(PlaceOrderInputDTO placeOrderInputDTO, Order order) {
-        Optional<Cupom> hasCupom = coupons.stream().filter(cupom -> cupom.getCode().equals(placeOrderInputDTO.getCupom())).findFirst();
-        hasCupom.ifPresent(cupom -> order.addCupom(new Cupom(placeOrderInputDTO.getCupom(), cupom.getPercentage(), cupom.getExpireDate())));
+        Optional<Coupon> hasCupom = coupons.stream().filter(cupom -> cupom.getCode().equals(placeOrderInputDTO.getCupom())).findFirst();
+        hasCupom.ifPresent(cupom -> order.addCupom(new Coupon(placeOrderInputDTO.getCupom(), cupom.getPercentage(), cupom.getExpireDate())));
     }
 }

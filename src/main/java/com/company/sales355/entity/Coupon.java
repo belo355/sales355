@@ -2,12 +2,12 @@ package com.company.sales355.entity;
 
 import java.time.LocalDate;
 
-public class Cupom {
+public class Coupon {
     private String code;
     private double percentage;
     private LocalDate expireDate;
 
-    public Cupom(String code, double percentage, LocalDate expireDate) {
+    public Coupon(String code, double percentage, LocalDate expireDate) {
         this.code = code;
         this.percentage = percentage;
         this.expireDate = expireDate;

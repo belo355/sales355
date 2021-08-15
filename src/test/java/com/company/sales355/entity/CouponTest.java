@@ -5,11 +5,11 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CupomTest {
+public class CouponTest {
 
     @Test
     public void shouldBeVerifyCouponExpired(){
-        Cupom cupom = new Cupom("VALE20", 20, LocalDate.of(2020, 1, 1));
-        assertTrue(cupom.isExpired());
+        Coupon coupon = new Coupon("VALE20", 20, LocalDate.of(2020, 1, 1));
+        assertTrue(coupon.isExpired());
     }
 }
