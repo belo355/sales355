@@ -1,6 +1,6 @@
 package com.company.sales355.entity;
 
-public class zipCodeCalculatorApiMemory implements zipCodeCalculator {
+public class ZipCodeCalculatorApiMemory implements ZipCodeCalculator {
 
     @Override
     public int calculate(String zipcodeOrig, String zipCodeDest) {

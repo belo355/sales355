@@ -13,7 +13,7 @@ public class PlaceOrder {
 
     private final List<Cupom> coupons = new ArrayList<>();
     private final List<Item> items = new ArrayList<>();
-    private zipCodeCalculatorApiMemory zipCodeCalculator = new zipCodeCalculatorApiMemory();
+    private ZipCodeCalculatorApiMemory zipCodeCalculator = new ZipCodeCalculatorApiMemory();
 
     public PlaceOrder() {
         coupons.add(new Cupom("VALE20", 20, LocalDate.now()));
@@ -33,7 +33,8 @@ public class PlaceOrder {
                 throw new Error("Item not found");
             }
             order.setOrderItem(new OrderItem(item.getId(), itemsRepo.get(0).getPrice(), item.getQuantity()));
-            double amountFreight = FreightCalculator.calculate(distance, itemsRepo.get(0));
+            FreightCalculator freightCalculator = new FreightCalculator();
+            double amountFreight = freightCalculator.calculate(distance, itemsRepo.get(0));
             order.setFreight(BigDecimal.valueOf(amountFreight).multiply(BigDecimal.valueOf(item.getQuantity())));
         }
         if (!placeOrderInputDTO.getCupom().isEmpty()) {
