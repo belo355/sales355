@@ -8,24 +8,24 @@ public class Order {
 
     public BigDecimal freight;
     private final Cpf cpf;
-    private final List<OrderItem> itens;
+    private final List<OrderItem> items;
     private Cupom cupom;
 
     public Order(Cpf cpf) {
         this.cpf = cpf;
-        this.itens = new ArrayList<>();
+        this.items = new ArrayList<>();
         this.freight = BigDecimal.ZERO;
     }
 
     public Order(Cpf cpf, OrderItem orderItem) {
-        this.itens = new ArrayList<>();
-        itens.add(orderItem);
+        this.items = new ArrayList<>();
+        items.add(orderItem);
         this.cpf = cpf;
         this.freight = BigDecimal.ZERO;
     }
 
     public Order(Cpf cpf, List<OrderItem> orderItem) {
-        this.itens = orderItem;
+        this.items = orderItem;
         this.cpf = cpf;
         this.freight = BigDecimal.ZERO;
     }
@@ -35,12 +35,12 @@ public class Order {
     }
 
     public void setOrderItem(OrderItem orderItem) {
-        this.itens.add(orderItem);
+        this.items.add(orderItem);
     }
 
     public BigDecimal getTotal() {
         BigDecimal total = BigDecimal.ZERO;
-        for (OrderItem oi : itens) {
+        for (OrderItem oi : items) {
             total = total.add(oi.getTotal());
         }
         if (this.cupom != null) {
@@ -56,8 +56,8 @@ public class Order {
         }
     }
 
-    public List<OrderItem> getItens() {
-        return itens;
+    public List<OrderItem> getItems() {
+        return items;
     }
 
     public Cupom getCupom() {

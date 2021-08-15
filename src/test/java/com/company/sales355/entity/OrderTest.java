@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 public class OrderTest {
 
     @Test
-    public void NotOrderCheckedWithCFPInvalid() {
+    public void notOrderCheckedWithCFPInvalid() {
         Cpf cpf = new Cpf("42036080820");
         OrderItem orderItem = new OrderItem("1", new BigDecimal("1000"),1);
         Order order = new Order(cpf, orderItem);
@@ -21,18 +21,18 @@ public class OrderTest {
     }
 
     @Test
-    public void ShouldCreateOrderHaveMust3Items(){
+    public void shouldCreateOrderHaveMust3Items(){
         Cpf cpf = new Cpf("42036080820");
         List<OrderItem> orderItems = new ArrayList<OrderItem>();
         orderItems.add(new OrderItem("1", new BigDecimal("1000"),1));
         orderItems.add(new OrderItem("2", new BigDecimal("5000"),1));
         orderItems.add(new OrderItem("3", new BigDecimal("30"),1));
         Order order = new Order(cpf, orderItems);
-        assertTrue(order.getItens().size() >= 3);
+        assertTrue(order.getItems().size() >= 3);
     }
 
     @Test
-    public void ShouldCreateOrderWithCupomSale(){
+    public void shouldCreateOrderWithCupomSale(){
         Cpf cpf = new Cpf("42036080820");
         List<OrderItem> orderItems = new ArrayList<OrderItem>();
         orderItems.add(new OrderItem("1", new BigDecimal("1000"),1));
@@ -43,7 +43,7 @@ public class OrderTest {
     }
 
     @Test
-    public void ShouldNotCreateOrderWithCupomExpired(){
+    public void shouldNotCreateOrderWithCupomExpired(){
         Cpf cpf = new Cpf("42036080820");
         List<OrderItem> orderItems = new ArrayList<OrderItem>();
         orderItems.add(new OrderItem("1", new BigDecimal("1000"),1));
