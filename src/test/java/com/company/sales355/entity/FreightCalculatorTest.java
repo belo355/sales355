@@ -27,5 +27,5 @@ public class FreightCalculatorTest {
         BigDecimal priceFreight = new BigDecimal(price);
         assertEquals(new BigDecimal("220"), priceFreight);
     }
-
 }
+    

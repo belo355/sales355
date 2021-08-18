@@ -24,7 +24,9 @@ public class PlaceOrderTest {
         orderItems.add(new OrderItem("3", new BigDecimal("1000"), 3));
         Coupon coupon = new Coupon("VALE20", 20, LocalDate.now());
         PlaceOrderInputDTO placeOrderInputDTO = new PlaceOrderInputDTO(cpf.getDocument(), orderItems, coupon.getCode(), zipCode);
-        PlaceOrder placeOrder = new PlaceOrder();
+        ItemRepository itemRepository = new ItemRepositoryInMemory();
+        CouponRepository couponRepository = new CouponRepositoryInMemory();
+        PlaceOrder placeOrder = new PlaceOrder(itemRepository, couponRepository);
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderInputDTO);
         assertEquals(placeOrderOutputDTO.getTotal(), new BigDecimal("5672.0"));
     }
@@ -38,7 +40,9 @@ public class PlaceOrderTest {
         items.add(new OrderItem("2", new BigDecimal("5000"),1));
         items.add(new OrderItem("3", new BigDecimal("30"),3));
         Coupon coupon = new Coupon("VALE20_EXPIRED", 20, LocalDate.of(2020, 1, 1));
-        PlaceOrder placeOrder = new PlaceOrder();
+        ItemRepository itemRepository = new ItemRepositoryInMemory();
+        CouponRepository couponRepository = new CouponRepositoryInMemory();
+        PlaceOrder placeOrder = new PlaceOrder(itemRepository, couponRepository);
         PlaceOrderInputDTO placeOrderInputDTO = new PlaceOrderInputDTO(cpf.getDocument(), items, coupon.getCode(),zipCode);
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderInputDTO);
         assertEquals(placeOrderOutputDTO.getTotal(), new BigDecimal("7400.0"));
@@ -53,7 +57,9 @@ public class PlaceOrderTest {
         items.add(new OrderItem("2", new BigDecimal("5000"),1));
         items.add(new OrderItem("3", new BigDecimal("30"),3));
         Coupon coupon = new Coupon("VALE20_EXPIRED", 20, LocalDate.of(2020, 1, 1));
-        PlaceOrder placeOrder = new PlaceOrder();
+        ItemRepository itemRepository = new ItemRepositoryInMemory();
+        CouponRepository couponRepository = new CouponRepositoryInMemory();
+        PlaceOrder placeOrder = new PlaceOrder(itemRepository, couponRepository);
         PlaceOrderInputDTO placeOrderInputDTO = new PlaceOrderInputDTO(cpf.getDocument(), items, coupon.getCode(), zipCode);
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderInputDTO);
         assertEquals(placeOrderOutputDTO.getFreight(), new BigDecimal("310.0"));
