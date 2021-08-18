@@ -1,8 +1,6 @@
 package com.company.sales355.userCase;
 
-import com.company.sales355.entity.Cpf;
-import com.company.sales355.entity.Coupon;
-import com.company.sales355.entity.OrderItem;
+import com.company.sales355.entity.*;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -27,7 +25,8 @@ public class PlaceOrderTest {
         ItemRepository itemRepository = new ItemRepositoryInMemory();
         CouponRepository couponRepository = new CouponRepositoryInMemory();
         OrderRepository orderRepository = new OrderRepositoryInMemory();
-        PlaceOrder placeOrder = new PlaceOrder(itemRepository, couponRepository, orderRepository );
+        ZipCodeCalculator zipCodeCalculator = new ZipCodeCalculatorApiMemory();
+        PlaceOrder placeOrder = new PlaceOrder(itemRepository, couponRepository, orderRepository, zipCodeCalculator );
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderDTO);
         assertEquals(placeOrderOutputDTO.getTotal(), new BigDecimal("5672.0"));
     }
@@ -44,7 +43,8 @@ public class PlaceOrderTest {
         ItemRepository itemRepository = new ItemRepositoryInMemory();
         CouponRepository couponRepository = new CouponRepositoryInMemory();
         OrderRepository orderRepository = new OrderRepositoryInMemory();
-        PlaceOrder placeOrder = new PlaceOrder(itemRepository, couponRepository, orderRepository );
+        ZipCodeCalculator zipCodeCalculator = new ZipCodeCalculatorApiMemory();
+        PlaceOrder placeOrder = new PlaceOrder(itemRepository, couponRepository, orderRepository, zipCodeCalculator );
         PlaceOrderDTO placeOrderDTO = new PlaceOrderDTO(cpf.getDocument(), items, coupon.getCode(),zipCode);
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderDTO);
         assertEquals(placeOrderOutputDTO.getTotal(), new BigDecimal("7400.0"));
@@ -62,7 +62,8 @@ public class PlaceOrderTest {
         ItemRepository itemRepository = new ItemRepositoryInMemory();
         CouponRepository couponRepository = new CouponRepositoryInMemory();
         OrderRepository orderRepository = new OrderRepositoryInMemory();
-        PlaceOrder placeOrder = new PlaceOrder(itemRepository, couponRepository, orderRepository );
+        ZipCodeCalculator zipCodeCalculator = new ZipCodeCalculatorApiMemory();
+        PlaceOrder placeOrder = new PlaceOrder(itemRepository, couponRepository, orderRepository, zipCodeCalculator );
         PlaceOrderDTO placeOrderDTO = new PlaceOrderDTO(cpf.getDocument(), items, coupon.getCode(), zipCode);
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderDTO);
         assertEquals(placeOrderOutputDTO.getFreight(), new BigDecimal("310.0"));

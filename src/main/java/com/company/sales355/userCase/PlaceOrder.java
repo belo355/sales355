@@ -1,12 +1,6 @@
 package com.company.sales355.userCase;
 
-import com.company.sales355.entity.Coupon;
-import com.company.sales355.entity.ZipCodeCalculatorApiMemory;
-import com.company.sales355.entity.Order;
-import com.company.sales355.entity.OrderItem;
-import com.company.sales355.entity.Item;
-import com.company.sales355.entity.Cpf;
-import com.company.sales355.entity.FreightCalculator;
+import com.company.sales355.entity.*;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -16,12 +10,14 @@ public class PlaceOrder {
     private final ItemRepository itemRepository;
     private final CouponRepository couponRepository;
     private final OrderRepository orderRepository;
-    private final ZipCodeCalculatorApiMemory zipCodeCalculator = new ZipCodeCalculatorApiMemory();
+    private final ZipCodeCalculator zipCodeCalculator;
 
-    public PlaceOrder(ItemRepository itemRepository, CouponRepository couponRepository, OrderRepository orderRepository) {
+    public PlaceOrder(ItemRepository itemRepository, CouponRepository couponRepository,
+                      OrderRepository orderRepository, ZipCodeCalculator zipCodeCalculator) {
         this.itemRepository = itemRepository;
         this.couponRepository = couponRepository;
         this.orderRepository = orderRepository;
+        this.zipCodeCalculator = zipCodeCalculator;
     }
 
     public PlaceOrderOutputDTO execute(PlaceOrderDTO placeOrderDTO) {
