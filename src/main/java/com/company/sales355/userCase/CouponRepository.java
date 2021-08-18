@@ -5,5 +5,5 @@ import com.company.sales355.entity.Coupon;
 import java.util.Optional;
 
 public interface CouponRepository {
-    Optional<Coupon> findById(String id);
+    Optional<Coupon> findByCode(String code);
 }

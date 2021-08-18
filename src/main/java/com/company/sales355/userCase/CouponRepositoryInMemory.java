@@ -15,7 +15,7 @@ public class CouponRepositoryInMemory implements CouponRepository{
         coupons.add(new Coupon("VALE20_EXPIRED", 20, LocalDate.of(2020, 1, 1)));
     }
     @Override
-    public Optional<Coupon> findById(String id) {
-        return this.coupons.stream().filter(c -> c.getCode().equals(id)).findFirst();
+    public Optional<Coupon> findByCode(String code) {
+        return this.coupons.stream().filter(c -> c.getCode().equals(code)).findFirst();
     }
 }
