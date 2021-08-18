@@ -1,4 +1,6 @@
-package com.company.sales355.entity;
+package com.company.sales355.userCase;
+
+import com.company.sales355.entity.ZipCodeCalculator;
 
 public class ZipCodeCalculatorApiMemory implements ZipCodeCalculator {
 

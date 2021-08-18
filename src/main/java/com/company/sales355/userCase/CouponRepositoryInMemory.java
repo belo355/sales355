@@ -1,13 +1,14 @@
 package com.company.sales355.userCase;
 
 import com.company.sales355.entity.Coupon;
+import com.company.sales355.entity.CouponRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class CouponRepositoryInMemory implements CouponRepository{
+public class CouponRepositoryInMemory implements CouponRepository {
     List<Coupon> coupons = new ArrayList<>();
 
     public CouponRepositoryInMemory(){

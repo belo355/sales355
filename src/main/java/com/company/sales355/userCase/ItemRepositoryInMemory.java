@@ -1,13 +1,14 @@
 package com.company.sales355.userCase;
 
 import com.company.sales355.entity.Item;
+import com.company.sales355.entity.ItemRepository;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ItemRepositoryInMemory implements ItemRepository{
+public class ItemRepositoryInMemory implements ItemRepository {
 
     private List<Item> items = new ArrayList<>();
     public ItemRepositoryInMemory(){

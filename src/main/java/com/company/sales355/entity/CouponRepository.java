@@ -1,4 +1,4 @@
-package com.company.sales355.userCase;
+package com.company.sales355.entity;
 
 import com.company.sales355.entity.Coupon;
 

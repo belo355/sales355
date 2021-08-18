@@ -1,11 +1,12 @@
 package com.company.sales355.userCase;
 
 import com.company.sales355.entity.Order;
+import com.company.sales355.entity.OrderRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderRepositoryInMemory implements OrderRepository{
+public class OrderRepositoryInMemory implements OrderRepository {
     List<Order> orders = new ArrayList<>();
 
     @Override

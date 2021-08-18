@@ -1,5 +1,6 @@
 package com.company.sales355.entity;
 
+import com.company.sales355.userCase.ZipCodeCalculatorApiMemory;
 import org.junit.Assert;
 import org.junit.Test;
 
