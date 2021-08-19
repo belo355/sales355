@@ -1,7 +1,7 @@
-package com.company.sales355.userCase;
+package com.company.sales355.infra.repository.memory;
 
-import com.company.sales355.entity.Item;
-import com.company.sales355.entity.ItemRepository;
+import com.company.sales355.domain.entity.Item;
+import com.company.sales355.domain.repository.ItemRepository;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

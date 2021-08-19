@@ -1,6 +1,6 @@
 package com.company.sales355.userCase;
 
-import com.company.sales355.entity.PagSeguroTransaction;
+import com.company.sales355.domain.entity.PagSeguroTransaction;
 import org.junit.Test;
 
 public class TransactionTest {

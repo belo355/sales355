@@ -1,5 +1,6 @@
-package com.company.sales355.entity;
+package com.company.sales355.domain.entity;
 
+import com.company.sales355.domain.services.FreightCalculator;
 import org.junit.Test;
 
 import java.math.BigDecimal;

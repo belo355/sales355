@@ -1,6 +1,6 @@
-package com.company.sales355.entity;
+package com.company.sales355.domain.repository;
 
-import com.company.sales355.entity.Coupon;
+import com.company.sales355.domain.entity.Coupon;
 
 import java.util.Optional;
 

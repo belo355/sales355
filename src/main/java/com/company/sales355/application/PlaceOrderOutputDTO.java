@@ -1,4 +1,4 @@
-package com.company.sales355.userCase;
+package com.company.sales355.application;
 
 import java.math.BigDecimal;
 

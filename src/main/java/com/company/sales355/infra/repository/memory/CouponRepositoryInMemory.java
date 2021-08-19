@@ -1,7 +1,7 @@
-package com.company.sales355.userCase;
+package com.company.sales355.infra.repository.memory;
 
-import com.company.sales355.entity.Coupon;
-import com.company.sales355.entity.CouponRepository;
+import com.company.sales355.domain.entity.Coupon;
+import com.company.sales355.domain.repository.CouponRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

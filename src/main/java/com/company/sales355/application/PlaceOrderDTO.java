@@ -1,6 +1,6 @@
-package com.company.sales355.userCase;
+package com.company.sales355.application;
 
-import com.company.sales355.entity.OrderItem;
+import com.company.sales355.domain.entity.OrderItem;
 
 import java.util.List;
 

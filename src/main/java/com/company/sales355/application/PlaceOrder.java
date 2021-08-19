@@ -1,6 +1,11 @@
-package com.company.sales355.userCase;
+package com.company.sales355.application;
 
-import com.company.sales355.entity.*;
+import com.company.sales355.domain.entity.*;
+import com.company.sales355.domain.repository.CouponRepository;
+import com.company.sales355.domain.repository.ItemRepository;
+import com.company.sales355.domain.repository.OrderRepository;
+import com.company.sales355.domain.services.FreightCalculator;
+import com.company.sales355.domain.gateway.memory.ZipCodeCalculatorApi;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -10,19 +15,19 @@ public class PlaceOrder {
     private final ItemRepository itemRepository;
     private final CouponRepository couponRepository;
     private final OrderRepository orderRepository;
-    private final ZipCodeCalculator zipCodeCalculator;
+    private final ZipCodeCalculatorApi zipCodeCalculatorApi;
 
     public PlaceOrder(ItemRepository itemRepository, CouponRepository couponRepository,
-                      OrderRepository orderRepository, ZipCodeCalculator zipCodeCalculator) {
+                      OrderRepository orderRepository, ZipCodeCalculatorApi zipCodeCalculatorApi) {
         this.itemRepository = itemRepository;
         this.couponRepository = couponRepository;
         this.orderRepository = orderRepository;
-        this.zipCodeCalculator = zipCodeCalculator;
+        this.zipCodeCalculatorApi = zipCodeCalculatorApi;
     }
 
     public PlaceOrderOutputDTO execute(PlaceOrderDTO placeOrderDTO) {
         Order order = new Order(new Cpf(placeOrderDTO.getCpf()));
-        int distance = this.zipCodeCalculator.calculate(placeOrderDTO.getZipCode(), "99.999-99");
+        int distance = this.zipCodeCalculatorApi.calculate(placeOrderDTO.getZipCode(), "99.999-99");
         for (OrderItem item : placeOrderDTO.getItems()) {
             Optional<Item> hasItemRepository = this.itemRepository.findById(item.getId());
             if(!hasItemRepository.isPresent()){

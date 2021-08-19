@@ -1,7 +1,7 @@
-package com.company.sales355.userCase;
+package com.company.sales355.infra.repository.memory;
 
-import com.company.sales355.entity.Order;
-import com.company.sales355.entity.OrderRepository;
+import com.company.sales355.domain.entity.Order;
+import com.company.sales355.domain.repository.OrderRepository;
 
 import java.util.ArrayList;
 import java.util.List;
