@@ -1,4 +1,4 @@
-package com.company.sales355.userCase;
+package com.company.sales355.application;
 
 import com.company.sales355.application.PlaceOrder;
 import com.company.sales355.application.PlaceOrderDTO;

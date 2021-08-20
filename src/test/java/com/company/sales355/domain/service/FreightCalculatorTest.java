@@ -1,5 +1,6 @@
-package com.company.sales355.domain.entity;
+package com.company.sales355.domain.service;
 
+import com.company.sales355.domain.entity.Item;
 import com.company.sales355.domain.services.FreightCalculator;
 import org.junit.Test;
 
