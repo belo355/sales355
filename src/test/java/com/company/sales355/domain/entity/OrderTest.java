@@ -39,7 +39,7 @@ public class OrderTest {
         orderItems.add(new OrderItem("2", new BigDecimal("5000"),1));
         Order order = new Order(cpf, orderItems);
         order.addCupom(new Coupon("VALE20", 20, LocalDate.now()));
-        assertEquals(new BigDecimal("4800.0"),  order.getTotal());
+        assertEquals(new BigDecimal("4800.00").setScale(1),  order.getTotal());
     }
 
     @Test

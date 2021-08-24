@@ -39,7 +39,7 @@ public class PlaceOrderTest {
         ZipCodeCalculatorApi zipCodeCalculatorApi = new ZipCodeCalculatorApiApiMemory();
         PlaceOrder placeOrder = new PlaceOrder(itemRepository, couponRepository, orderRepository, zipCodeCalculatorApi);
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderDTO);
-        assertEquals(placeOrderOutputDTO.getTotal(), new BigDecimal("5672.0"));
+        assertEquals(placeOrderOutputDTO.getTotal(), new BigDecimal("5672.00").setScale(1));
     }
 
     @Test
@@ -58,7 +58,7 @@ public class PlaceOrderTest {
         PlaceOrder placeOrder = new PlaceOrder(itemRepository, couponRepository, orderRepository, zipCodeCalculatorApi);
         PlaceOrderDTO placeOrderDTO = new PlaceOrderDTO(cpf.getDocument(), items, coupon.getCode(),zipCode);
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderDTO);
-        assertEquals(placeOrderOutputDTO.getTotal(), new BigDecimal("7400.0"));
+        assertEquals(placeOrderOutputDTO.getTotal(), new BigDecimal("7400.00").setScale(1));
     }
 
     @Test
@@ -77,6 +77,6 @@ public class PlaceOrderTest {
         PlaceOrder placeOrder = new PlaceOrder(itemRepository, couponRepository, orderRepository, zipCodeCalculatorApi);
         PlaceOrderDTO placeOrderDTO = new PlaceOrderDTO(cpf.getDocument(), items, coupon.getCode(), zipCode);
         PlaceOrderOutputDTO placeOrderOutputDTO = placeOrder.execute(placeOrderDTO);
-        assertEquals(placeOrderOutputDTO.getFreight(), new BigDecimal("310.0"));
+        assertEquals(placeOrderOutputDTO.getFreight(), new BigDecimal("310.00").setScale(1));
     }
 }
