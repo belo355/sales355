@@ -1,8 +1,5 @@
 package com.company.sales355.application.placeOrder;
 
-import com.company.sales355.application.placeOrder.PlaceOrderCU;
-import com.company.sales355.application.placeOrder.PlaceOrderCheckoutDTO;
-import com.company.sales355.application.placeOrder.PlaceOrderDTO;
 import com.company.sales355.domain.entity.*;
 import com.company.sales355.domain.gateway.memory.ZipCodeCalculatorApi;
 import com.company.sales355.infra.gateway.memory.ZipCodeCalculatorApiApiMemory;

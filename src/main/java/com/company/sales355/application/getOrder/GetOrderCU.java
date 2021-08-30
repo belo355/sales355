@@ -1,11 +1,15 @@
 package com.company.sales355.application.getOrder;
 
-import com.company.sales355.application.placeOrder.PlaceOrderCheckoutDTO;
-import com.company.sales355.application.placeOrder.PlaceOrderDTO;
-import com.company.sales355.domain.gateway.memory.ZipCodeCalculatorApi;
+import com.company.sales355.domain.entity.Item;
+import com.company.sales355.domain.entity.Order;
+import com.company.sales355.domain.entity.OrderItem;
 import com.company.sales355.domain.repository.CouponRepository;
 import com.company.sales355.domain.repository.ItemRepository;
 import com.company.sales355.domain.repository.OrderRepository;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class GetOrderCU {
 
@@ -19,8 +23,20 @@ public class GetOrderCU {
         this.orderRepository = orderRepository;
     }
 
-    public PlaceOrderCheckoutDTO execute(PlaceOrderDTO placeOrderDTO) {
-
+    public GetOrderCheckoutDTO execute(String code) {
+        Order order = this.orderRepository.getByCode(code);
+        OrderInvoicedItemDTO orderCheckoutItemDTO = new OrderInvoicedItemDTO();
+        List<OrderInvoicedItemDTO> orderCheckoutItemDTOS = new ArrayList<>();
+        for(OrderItem orderItem: order.getItems()){
+            Optional<Item> item = itemRepository.findById(orderItem.getId());
+            if(item.isPresent()){
+                orderCheckoutItemDTO.setDescription(item.get().getDescription());
+                orderCheckoutItemDTO.setPrice(orderItem.getPrice());
+                orderCheckoutItemDTO.setQuantity(orderItem.getQuantity());
+            }
+            orderCheckoutItemDTOS.add(orderCheckoutItemDTO);
+        }
+        return new GetOrderCheckoutDTO(order.getCode(), order.getFreight(), order.getTotal(), orderCheckoutItemDTOS);
     }
 
 }

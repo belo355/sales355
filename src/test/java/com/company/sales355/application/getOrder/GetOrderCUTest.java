@@ -45,8 +45,8 @@ public class GetOrderCUTest {
         PlaceOrderCheckoutDTO placeOrderCheckoutDTO = placeOrderCU.execute(placeOrderDTO);
 
         GetOrderCU getOrderCU = new GetOrderCU(itemRepository, couponRepository, orderRepository);
-        GetOrderCheckoutDTO getOrderCheckoutDTO = getOrderCU.execute(placeOrderOutputDTO.getCode());
-        assertEquals(placeOrderCheckoutDTO.getFreight(), new BigDecimal("310.00").setScale(1));
+        GetOrderCheckoutDTO getOrderCheckoutDTO = getOrderCU.execute(placeOrderCheckoutDTO.getCode());
+        assertEquals(getOrderCheckoutDTO.getCode(), placeOrderCheckoutDTO.getCode());
     }
 
 }
