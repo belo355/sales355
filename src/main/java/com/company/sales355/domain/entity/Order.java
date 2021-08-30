@@ -10,11 +10,20 @@ public class Order {
     private final Cpf cpf;
     private final List<OrderItem> items;
     private Coupon coupon;
+    private String code;
 
     public Order(Cpf cpf) {
         this.cpf = cpf;
         this.items = new ArrayList<>();
         this.freight = BigDecimal.ZERO;
+        this.code = "";
+    }
+
+    public Order(Cpf cpf, String code) {
+        this.cpf = cpf;
+        this.items = new ArrayList<>();
+        this.freight = BigDecimal.ZERO;
+        this.code = code;
     }
 
     public Order(Cpf cpf, OrderItem orderItem) {
@@ -22,12 +31,14 @@ public class Order {
         items.add(orderItem);
         this.cpf = cpf;
         this.freight = BigDecimal.ZERO;
+        this.code = "";
     }
 
     public Order(Cpf cpf, List<OrderItem> orderItem) {
         this.items = orderItem;
         this.cpf = cpf;
         this.freight = BigDecimal.ZERO;
+        this.code = "";
     }
 
     public String getCpf() {
@@ -70,5 +81,9 @@ public class Order {
 
     public BigDecimal getFreight() {
         return this.freight;
+    }
+
+    public String getCode() {
+        return code;
     }
 }

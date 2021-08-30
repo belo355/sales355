@@ -52,4 +52,16 @@ public class OrderTest {
         order.addCupom(new Coupon("VALE20", 20, LocalDate.of(2020, 10, 1)));
         assertEquals(new BigDecimal("6000"),  order.getTotal());
     }
+
+    @Test
+    public void shouldBeCreateOrderWithCodeIdentification(){
+        Cpf cpf = new Cpf("42036080820");
+        OrderItem item1 = new OrderItem("1", new BigDecimal("1000"),1, "20210101000001");
+        OrderItem item2 = new OrderItem("2", new BigDecimal("5000"),1, "20210101000001");
+        Order order = new Order(cpf, "20210101000001");
+        order.setOrderItem(item1);
+        order.setOrderItem(item2);
+        order.addCupom(new Coupon("VALE20", 20, LocalDate.of(2020, 10, 1)));
+        assertEquals(new BigDecimal("6000"),  order.getTotal());
+    }
 }

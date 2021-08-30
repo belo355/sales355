@@ -33,7 +33,7 @@ public class PlaceOrder {
             if(!hasItemRepository.isPresent()){
                 throw new Error("Item not found");
             }
-            order.setOrderItem(new OrderItem(item.getId(), hasItemRepository.get().getPrice(), item.getQuantity()));
+            order.setOrderItem(new OrderItem(item.getId(), hasItemRepository.get().getPrice(), item.getQuantity(), item.getCodeOrder()));
             order.setFreight(calculateFreightValue(distance, hasItemRepository, item, new FreightCalculator()));
         }
         if (!placeOrderDTO.getCoupon().isEmpty()) {
