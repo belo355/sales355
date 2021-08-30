@@ -1,4 +1,4 @@
-package com.company.sales355.application;
+package com.company.sales355.application.placeOrder;
 
 import com.company.sales355.domain.entity.OrderItem;
 
@@ -9,6 +9,7 @@ public class PlaceOrderDTO {
     private String cpf;
     private List<OrderItem> items;
     private String coupon;
+    private String code;
 
     public String getZipCode() {
         return zipCode;
@@ -19,6 +20,15 @@ public class PlaceOrderDTO {
         this.items = items;
         this.coupon = coupon;
         this.zipCode = zipCode;
+        this.code = "";
+    }
+
+    public PlaceOrderDTO(String cpf, List<OrderItem> items, String coupon, String zipCode, String code) {
+        this.cpf = cpf;
+        this.items = items;
+        this.coupon = coupon;
+        this.zipCode = zipCode;
+        this.code = code;
     }
 
     public String getCpf() {
@@ -35,4 +45,7 @@ public class PlaceOrderDTO {
 
     private String zipCode;
 
+    public String getCode() {
+        return code;
+    }
 }

@@ -1,4 +1,4 @@
-package com.company.sales355.application;
+package com.company.sales355.application.placeOrder;
 
 import com.company.sales355.domain.entity.*;
 import com.company.sales355.domain.repository.CouponRepository;
@@ -10,23 +10,23 @@ import com.company.sales355.domain.gateway.memory.ZipCodeCalculatorApi;
 import java.math.BigDecimal;
 import java.util.Optional;
 
-public class PlaceOrder {
+public class PlaceOrderCU {
 
     private final ItemRepository itemRepository;
     private final CouponRepository couponRepository;
     private final OrderRepository orderRepository;
     private final ZipCodeCalculatorApi zipCodeCalculatorApi;
 
-    public PlaceOrder(ItemRepository itemRepository, CouponRepository couponRepository,
-                      OrderRepository orderRepository, ZipCodeCalculatorApi zipCodeCalculatorApi) {
+    public PlaceOrderCU(ItemRepository itemRepository, CouponRepository couponRepository,
+                        OrderRepository orderRepository, ZipCodeCalculatorApi zipCodeCalculatorApi) {
         this.itemRepository = itemRepository;
         this.couponRepository = couponRepository;
         this.orderRepository = orderRepository;
         this.zipCodeCalculatorApi = zipCodeCalculatorApi;
     }
 
-    public PlaceOrderOutputDTO execute(PlaceOrderDTO placeOrderDTO) {
-        Order order = new Order(new Cpf(placeOrderDTO.getCpf()));
+    public PlaceOrderCheckoutDTO execute(PlaceOrderDTO placeOrderDTO) {
+        Order order = new Order(new Cpf(placeOrderDTO.getCpf()), "20210101000001");
         int distance = this.zipCodeCalculatorApi.calculate(placeOrderDTO.getZipCode(), "99.999-99");
         for (OrderItem item : placeOrderDTO.getItems()) {
             Optional<Item> hasItemRepository = this.itemRepository.findById(item.getId());
@@ -39,9 +39,10 @@ public class PlaceOrder {
         if (!placeOrderDTO.getCoupon().isEmpty()) {
             includeCouponIntoOrder(placeOrderDTO, order);
         }
-        PlaceOrderOutputDTO outputDTO = new PlaceOrderOutputDTO();
+        PlaceOrderCheckoutDTO outputDTO = new PlaceOrderCheckoutDTO();
         outputDTO.setTotal(order.getTotal());
         outputDTO.setFreight(order.getFreight());
+        outputDTO.setCode(order.getCode());
         orderRepository.save(order);
         return outputDTO;
     }
