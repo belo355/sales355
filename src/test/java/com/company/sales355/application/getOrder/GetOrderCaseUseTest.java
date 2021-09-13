@@ -1,10 +1,8 @@
 package com.company.sales355.application.getOrder;
 
-import com.company.sales355.application.getOrder.GetOrderCheckoutDTO;
-import com.company.sales355.application.placeOrder.PlaceOrderCU;
+import com.company.sales355.application.placeOrder.PlaceOrderCaseUse;
 import com.company.sales355.application.placeOrder.PlaceOrderCheckoutDTO;
 import com.company.sales355.application.placeOrder.PlaceOrderDTO;
-import com.company.sales355.application.getOrder.GetOrderCU;
 import com.company.sales355.domain.entity.Coupon;
 import com.company.sales355.domain.entity.Cpf;
 import com.company.sales355.domain.entity.OrderItem;
@@ -25,7 +23,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class GetOrderCUTest {
+public class GetOrderCaseUseTest {
 
     @Test
     public void shouldBeCreateOrderWithCodeidentification() {
@@ -40,12 +38,12 @@ public class GetOrderCUTest {
         CouponRepository couponRepository = new CouponRepositoryInMemory();
         OrderRepository orderRepository = new OrderRepositoryInMemory();
         ZipCodeCalculatorApi zipCodeCalculatorApi = new ZipCodeCalculatorApiApiMemory();
-        PlaceOrderCU placeOrderCU = new PlaceOrderCU(itemRepository, couponRepository, orderRepository, zipCodeCalculatorApi);
+        PlaceOrderCaseUse placeOrderCaseUse = new PlaceOrderCaseUse(itemRepository, couponRepository, orderRepository, zipCodeCalculatorApi);
         PlaceOrderDTO placeOrderDTO = new PlaceOrderDTO(cpf.getDocument(), items, coupon.getCode(), zipCode, "20210101000001");
-        PlaceOrderCheckoutDTO placeOrderCheckoutDTO = placeOrderCU.execute(placeOrderDTO);
+        PlaceOrderCheckoutDTO placeOrderCheckoutDTO = placeOrderCaseUse.execute(placeOrderDTO);
 
-        GetOrderCU getOrderCU = new GetOrderCU(itemRepository, couponRepository, orderRepository);
-        GetOrderCheckoutDTO getOrderCheckoutDTO = getOrderCU.execute(placeOrderCheckoutDTO.getCode());
+        GetOrderCaseUse getOrderCaseUse = new GetOrderCaseUse(itemRepository, couponRepository, orderRepository);
+        GetOrderCheckoutDTO getOrderCheckoutDTO = getOrderCaseUse.execute(placeOrderCheckoutDTO.getCode());
         assertEquals(getOrderCheckoutDTO.getCode(), placeOrderCheckoutDTO.getCode());
     }
 

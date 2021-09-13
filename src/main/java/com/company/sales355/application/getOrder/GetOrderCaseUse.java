@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class GetOrderCU {
+public class GetOrderCaseUse {
 
     private final ItemRepository itemRepository;
     private final CouponRepository couponRepository;
     private final OrderRepository orderRepository;
 
-    public GetOrderCU(ItemRepository itemRepository, CouponRepository couponRepository, OrderRepository orderRepository) {
+    public GetOrderCaseUse(ItemRepository itemRepository, CouponRepository couponRepository, OrderRepository orderRepository) {
         this.itemRepository = itemRepository;
         this.couponRepository = couponRepository;
         this.orderRepository = orderRepository;

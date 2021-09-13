@@ -18,7 +18,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class PlaceOrderCUTest {
+public class PlaceOrderCaseUseTest {
 
     @Test
     public void shouldBeCreateOrder() {
@@ -34,8 +34,8 @@ public class PlaceOrderCUTest {
         CouponRepository couponRepository = new CouponRepositoryInMemory();
         OrderRepository orderRepository = new OrderRepositoryInMemory();
         ZipCodeCalculatorApi zipCodeCalculatorApi = new ZipCodeCalculatorApiApiMemory();
-        PlaceOrderCU placeOrderCU = new PlaceOrderCU(itemRepository, couponRepository, orderRepository, zipCodeCalculatorApi);
-        PlaceOrderCheckoutDTO placeOrderCheckoutDTO = placeOrderCU.execute(placeOrderDTO);
+        PlaceOrderCaseUse placeOrderCaseUse = new PlaceOrderCaseUse(itemRepository, couponRepository, orderRepository, zipCodeCalculatorApi);
+        PlaceOrderCheckoutDTO placeOrderCheckoutDTO = placeOrderCaseUse.execute(placeOrderDTO);
         assertEquals(placeOrderCheckoutDTO.getTotal(), new BigDecimal("5672.00").setScale(1));
     }
 
@@ -52,9 +52,9 @@ public class PlaceOrderCUTest {
         CouponRepository couponRepository = new CouponRepositoryInMemory();
         OrderRepository orderRepository = new OrderRepositoryInMemory();
         ZipCodeCalculatorApi zipCodeCalculatorApi = new ZipCodeCalculatorApiApiMemory();
-        PlaceOrderCU placeOrderCU = new PlaceOrderCU(itemRepository, couponRepository, orderRepository, zipCodeCalculatorApi);
+        PlaceOrderCaseUse placeOrderCaseUse = new PlaceOrderCaseUse(itemRepository, couponRepository, orderRepository, zipCodeCalculatorApi);
         PlaceOrderDTO placeOrderDTO = new PlaceOrderDTO(cpf.getDocument(), items, coupon.getCode(),zipCode);
-        PlaceOrderCheckoutDTO placeOrderCheckoutDTO = placeOrderCU.execute(placeOrderDTO);
+        PlaceOrderCheckoutDTO placeOrderCheckoutDTO = placeOrderCaseUse.execute(placeOrderDTO);
         assertEquals(placeOrderCheckoutDTO.getTotal(), new BigDecimal("7400.00").setScale(1));
     }
 
@@ -71,9 +71,9 @@ public class PlaceOrderCUTest {
         CouponRepository couponRepository = new CouponRepositoryInMemory();
         OrderRepository orderRepository = new OrderRepositoryInMemory();
         ZipCodeCalculatorApi zipCodeCalculatorApi = new ZipCodeCalculatorApiApiMemory();
-        PlaceOrderCU placeOrderCU = new PlaceOrderCU(itemRepository, couponRepository, orderRepository, zipCodeCalculatorApi);
+        PlaceOrderCaseUse placeOrderCaseUse = new PlaceOrderCaseUse(itemRepository, couponRepository, orderRepository, zipCodeCalculatorApi);
         PlaceOrderDTO placeOrderDTO = new PlaceOrderDTO(cpf.getDocument(), items, coupon.getCode(), zipCode);
-        PlaceOrderCheckoutDTO placeOrderCheckoutDTO = placeOrderCU.execute(placeOrderDTO);
+        PlaceOrderCheckoutDTO placeOrderCheckoutDTO = placeOrderCaseUse.execute(placeOrderDTO);
         assertEquals(placeOrderCheckoutDTO.getFreight(), new BigDecimal("310.00").setScale(1));
     }
 
@@ -90,9 +90,9 @@ public class PlaceOrderCUTest {
         CouponRepository couponRepository = new CouponRepositoryInMemory();
         OrderRepository orderRepository = new OrderRepositoryInMemory();
         ZipCodeCalculatorApi zipCodeCalculatorApi = new ZipCodeCalculatorApiApiMemory();
-        PlaceOrderCU placeOrderCU = new PlaceOrderCU(itemRepository, couponRepository, orderRepository, zipCodeCalculatorApi);
+        PlaceOrderCaseUse placeOrderCaseUse = new PlaceOrderCaseUse(itemRepository, couponRepository, orderRepository, zipCodeCalculatorApi);
         PlaceOrderDTO placeOrderDTO = new PlaceOrderDTO(cpf.getDocument(), items, coupon.getCode(), zipCode, "20210101000001");
-        PlaceOrderCheckoutDTO placeOrderCheckoutDTO = placeOrderCU.execute(placeOrderDTO);
+        PlaceOrderCheckoutDTO placeOrderCheckoutDTO = placeOrderCaseUse.execute(placeOrderDTO);
         assertEquals(placeOrderCheckoutDTO.getFreight(), new BigDecimal("310.00").setScale(1));
     }
 }

@@ -10,15 +10,15 @@ import com.company.sales355.domain.gateway.memory.ZipCodeCalculatorApi;
 import java.math.BigDecimal;
 import java.util.Optional;
 
-public class PlaceOrderCU {
+public class PlaceOrderCaseUse {
 
     private final ItemRepository itemRepository;
     private final CouponRepository couponRepository;
     private final OrderRepository orderRepository;
     private final ZipCodeCalculatorApi zipCodeCalculatorApi;
 
-    public PlaceOrderCU(ItemRepository itemRepository, CouponRepository couponRepository,
-                        OrderRepository orderRepository, ZipCodeCalculatorApi zipCodeCalculatorApi) {
+    public PlaceOrderCaseUse(ItemRepository itemRepository, CouponRepository couponRepository,
+                             OrderRepository orderRepository, ZipCodeCalculatorApi zipCodeCalculatorApi) {
         this.itemRepository = itemRepository;
         this.couponRepository = couponRepository;
         this.orderRepository = orderRepository;
